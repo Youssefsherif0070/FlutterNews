@@ -76,16 +76,18 @@ Category Support: You can navigate through news by categories such as:
 
 - Showcase this project in my personal portfolio to highlight my app development skills.
 
-Screenshots from the app: 
+---
+
+## 📸 Screenshots from the App:
+
 <p float="left">
   <img src="Screenshots/1-splashScreen.png" width="45%" />
   <img src="Screenshots/2-homescreen.png" width="45%" />
-    <img src="Screenshots/3-homescreen2" width="45%" />
+  <img src="Screenshots/3-homescreen2.png" width="45%" />
   <img src="Screenshots/4-categories.png" width="45%" />
-    <img src="Screenshots/5-categorynews.png" width="45%" />
-
-
+  <img src="Screenshots/5-categorynews.png" width="45%" />
 </p>
+
 
 🚀 Notes:
 - This project is my first step into learning and developing apps with Flutter.
