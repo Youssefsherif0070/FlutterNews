@@ -64,6 +64,7 @@ Category Support: You can navigate through news by categories such as:
 1- Download the project to your machine.
 
 2- Install the dependencies using: flutter pub get
+
 3- Run the app on the emulator or a device: flutter run
 
 💡 Project Goals:
