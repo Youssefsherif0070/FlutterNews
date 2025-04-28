@@ -1,4 +1,6 @@
 import 'package:tap_news/models/category_model.dart';
+import 'package:tap_news/models/articel_model.dart';
+import 'package:flutter/material.dart';
 
 List<CategoryModel> categories = [
   CategoryModel(
@@ -72,3 +74,7 @@ List<CategoryModel> categories = [
         "Stay plugged into the latest tech innovations, gadgets, startups, and digital revolutions that are changing the way we live, work, and play.",
   ),
 ];
+
+class LikedArticles {
+  static ValueNotifier<List<ArticleModel>> likedArticles = ValueNotifier([]);
+}

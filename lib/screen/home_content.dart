@@ -5,14 +5,14 @@ import 'package:tap_news/services/news_service.dart';
 import 'package:tap_news/widget/colorized_card.dart';
 import 'package:tap_news/widget/news_card.dart';
 
-class HomeContentScreen extends StatefulWidget{
+class HomeContentScreen extends StatefulWidget {
   const HomeContentScreen({super.key});
 
   @override
   State<HomeContentScreen> createState() => _HomeContentScreenState();
 }
 
-class _HomeContentScreenState extends State<HomeContentScreen>   {
+class _HomeContentScreenState extends State<HomeContentScreen> {
   List<ArticleModel> articles = [];
 
   @override
@@ -74,6 +74,7 @@ class _HomeContentScreenState extends State<HomeContentScreen>   {
           SliverList.separated(
             itemBuilder: (context, index) {
               return NewsCard(
+                article: articles[index],
                 image: articles[index].urlToImage,
                 title: articles[index].title,
                 source: articles[index].name,

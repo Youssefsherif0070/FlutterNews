@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tap_news/models/articel_model.dart';
 import 'package:tap_news/widget/heart_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -8,22 +9,23 @@ class NewsCard extends StatelessWidget {
     required this.title,
     required this.source,
     required this.image,
+    required this.article,
   });
   final String title;
   final String source;
   final String image;
+  final ArticleModel article;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
+      width: double.infinity,
       height: 140,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-
             borderRadius: BorderRadius.circular(12),
-            
+
             child: CachedNetworkImage(
               imageUrl: image,
               width: 160,
@@ -38,14 +40,7 @@ class NewsCard extends StatelessWidget {
                   ),
               errorWidget: (context, url, error) {
                 return const Center(
-                  child: Text(
-                    "Image not available",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: Image(image: AssetImage("assets/errorImage.png")),
                 );
               },
             ),
@@ -93,7 +88,7 @@ class NewsCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    HeartButton(),
+                    HeartButton(article: article),
                   ],
                 ),
               ],

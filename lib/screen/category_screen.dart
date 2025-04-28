@@ -30,131 +30,67 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 
   Future fetchNews() async {
-    dynamic fetchedAritcles;
-    switch (widget.categoryName) {
-      case "Business":
-        fetchedAritcles = await NewsService().businessNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
-      case "Crypto":
-        fetchedAritcles = await NewsService().cryptoNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
-      case "Entertainment":
-        fetchedAritcles = await NewsService().entertainmentNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
-      case "Gaming":
-        fetchedAritcles = await NewsService().gamingNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
-      case "Health":
-        fetchedAritcles = await NewsService().healthNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
-      case "Life-Style":
-        fetchedAritcles = await NewsService().lifeStyleNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
+    Map<String, Future<dynamic>> categoryMap = {
+      "Business": NewsService().businessNews(),
+      "Crypto": NewsService().cryptoNews(),
+      "Entertainment": NewsService().entertainmentNews(),
+      "Gaming": NewsService().gamingNews(),
+      "Health": NewsService().healthNews(),
+      "Life-Style": NewsService().lifeStyleNews(),
+      "Politics": NewsService().politicsNews(),
+      "Science": NewsService().scienceNews(),
+      "Technology": NewsService().technologyNews(),
+      "Sports": NewsService().sportsNews(),
+    };
 
-      case "Politics":
-        fetchedAritcles = await NewsService().politicsNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
+    dynamic fetchedArticles;
 
-      case "Science":
-        fetchedAritcles = await NewsService().scienceNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
-
-      case "Technology":
-        fetchedAritcles = await NewsService().technologyNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-
-        break;
-      case "Sports":
-        fetchedAritcles = await NewsService().sportsNews();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-
-        break;
-      default:
-        fetchedAritcles = await NewsService().topHeadlines();
-        setState(() {
-          articles = fetchedAritcles;
-        });
-        break;
+    if (categoryMap.containsKey(widget.categoryName)) {
+      fetchedArticles = await categoryMap[widget.categoryName];
+    } else {
+      fetchedArticles = await NewsService().topHeadlines();
     }
+
+    setState(() {
+      articles = fetchedArticles;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    
+    Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 50, right: 18, left: 18),
+        padding: const EdgeInsets.only(top: 60, right: 18, left: 18),
 
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
           slivers: [
-            SliverAppBar(
-              expandedHeight: 100,
-              pinned: true,
-              floating: false,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  widget.categoryHeadline,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    shadows: [
-                      Shadow(
-                        blurRadius: 10,
-                        color: Colors.black45,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                ),
-                centerTitle: true,
-                background: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.deepPurple, Colors.purpleAccent],
+            SliverToBoxAdapter(
+              child: ShaderMask(
+                shaderCallback:
+                    (bounds) => const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                    ),
+                      colors: [
+                        Colors.red,
+                        Colors.pink,
+                        Colors.purple,
+                        Colors.deepPurple,
+                      ],
+                    ).createShader(bounds),
+                child: Text(
+                  widget.categoryHeadline,
+                  style: const TextStyle(
+                    fontSize: 22,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(20),
-                ),
-              ),
-              backgroundColor: Colors.deepPurple,
-              elevation: 0,
             ),
-            SliverToBoxAdapter(child: const SizedBox(height: 20)),
+            SliverToBoxAdapter(child: const SizedBox(height: 15)),
             SliverToBoxAdapter(
               child: Container(
                 decoration: BoxDecoration(
@@ -173,7 +109,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
             SliverToBoxAdapter(child: const SizedBox(height: 20)),
             SliverToBoxAdapter(
               child:
-                  // ask if articles is empty "Still loading" if yes == shimmer  , else show "Top headlines for you"
                   articles.isEmpty
                       ? Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,
@@ -190,6 +125,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             SliverList.separated(
               itemBuilder: (context, index) {
                 return NewsCard(
+                  article: articles[index],
                   image: articles[index].urlToImage,
                   title: articles[index].title,
                   source: articles[index].name,
