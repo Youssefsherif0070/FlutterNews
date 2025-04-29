@@ -1,6 +1,5 @@
-# flutter_news
-
-A new Flutter project.
+# Flutter_news
+- This project is my first step into learning and developing apps with Flutter.
 
 ## Getting Started
 
@@ -91,9 +90,6 @@ Category Support: You can navigate through news by categories such as:
 
 </p>
 
-
-## 🚀 Notes:
-- This project is my first step into learning and developing apps with Flutter.
 
 
 
