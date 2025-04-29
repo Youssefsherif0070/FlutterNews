@@ -86,6 +86,9 @@ Category Support: You can navigate through news by categories such as:
   <img src="Screenshots/3-homescreen2.png" width="40%" />
   <img src="Screenshots/4-categories.png" width="40%" />
   <img src="Screenshots/5-categorynews.png" width="40%" />
+  <img src="Screenshots/6-likdescreenempty.png" width="d0%"/>
+    <img src="Screenshots/6-likdescreen.png" width="d0%"/>
+
 </p>
 
 
