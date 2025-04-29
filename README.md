@@ -3,17 +3,6 @@
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 Flutter News App
 📰 Key Features:
 - Live News: The app allows you to follow the latest news from trusted sources in various fields such as politics, sports, entertainment, technology, and more.
@@ -44,9 +33,9 @@ Category Support: You can navigate through news by categories such as:
 🚀 Technologies Used:
 - Flutter: The main framework for building the app.
 
-- Dio: For making HTTP requests to the API and fetching news.
+- Dio: For making HTTP requests to the API and fetching news. https://pub.dev/packages/dio
 
-- NewsAPI: The news provider used to pull real-time news.
+- NewsAPI: The news provider used to pull real-time news. https://newsapi.org/
 
 - Animated Containers: For dynamically animating UI elements to catch the user's attention.
 
