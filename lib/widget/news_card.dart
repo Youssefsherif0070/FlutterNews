@@ -15,6 +15,7 @@ class NewsCard extends StatelessWidget {
   final String source;
   final String image;
   final ArticleModel article;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,7 +26,6 @@ class NewsCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-
             child: CachedNetworkImage(
               imageUrl: image,
               width: 160,
@@ -63,7 +63,6 @@ class NewsCard extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   children: [
                     SizedBox(
                       height: 40,

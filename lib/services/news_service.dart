@@ -12,8 +12,8 @@ class NewsService {
         "https://newsapi.org/v2/top-headlines?country=us&apiKey=b2c477ef973e48739375006d4a220bd9",
       );
 
-      Map<String, dynamic> data = response.data;
-      List<dynamic> articles = data["articles"];
+      Map<String, dynamic> jsonData = response.data;
+      List<dynamic> articles = jsonData["articles"];
       List<ArticleModel> articlesList = [];
 
       for (var article in articles) {
