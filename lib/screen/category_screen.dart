@@ -58,11 +58,18 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.categoryName,
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 60, right: 18, left: 18),
+        padding: const EdgeInsets.only(top: 20, right: 18, left: 18),
 
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
